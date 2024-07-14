@@ -4,8 +4,11 @@ pipeline{
         stage("Example_pipeline"){
             steps{
                 script{
-                    currentBuild.displayName="Deployment"
-                    currentBuild.description="This build is used for Deployment"
+                    sh '''
+                       ls -lrt
+                       pwd
+                    '''
+                    
                 }
                 echo "example"
             }
@@ -15,6 +18,7 @@ pipeline{
         steps{
           script{
             sh '''
+               docker version
                docker build -t myubuntu1 .
                '''
           }
