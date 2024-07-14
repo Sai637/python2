@@ -18,8 +18,11 @@ pipeline{
         steps{
           script{
             sh '''
-               docker version
-               docker build -t myubuntu1 .
+               sudo apt-get -s update 
+                    sudo apt-get install -y docker.io
+                    sudo systemctl start docker
+                    sudo systemctl enable docker
+                    docker --version
                '''
           }
         }
