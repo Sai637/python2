@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+        stage("Example_pipeline"){
+            steps{
+                script{
+                    currentBuild.displayName="Deployment"
+                    currentBuild.description="This build is used for Deployment"
+                }
+                echo "example"
+            }
+  
+        }
+      stage("docker_build"){
+        steps{
+          script{
+            sh '''
+               docker build -t myubuntu1 .
+               '''
+          }
+        }
+      }
+        
+    }
+}
